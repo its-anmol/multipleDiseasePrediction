@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liver Disease Prediction</title>
+    
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='image/gradient.jpeg') }}");
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-size: cover;  /* Makes the image cover the entire viewport */
+            background-repeat: no-repeat;  /* Prevents the image from repeating */
+            background-position: center;  /* Centers the image */
+            background-attachment: fixed;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            margin: 0 auto; /* Add this line to center the form horizontally */
+            margin-top: 20px; /* Add this line for some top margin */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            color: #007BFF;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+        }
+
+        p {
+            text-align: center;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .prediction-box {
+            border: 2px solid #007BFF;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        #prediction-heading {
+            color: rgb(209, 191, 54); /* This styles only the element with the ID "prediction-heading" */
+        }
+    </style>
+</head>
+<body>
+    <h1 id="prediction-heading">Liver Disease Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="age">Age:</label>
+        <input type="text" name="age" required><br>
+
+        <label for="gender">Gender (0 for female, 1 for male):</label>
+        <input type="text" name="gender" required><br>
+
+        <label for="total_bilirubin">Total Bilirubin:</label>
+        <input type="text" name="total_bilirubin" required><br>
+
+        <label for="direct_bilirubin">Direct Bilirubin:</label>
+        <input type="text" name="direct_bilirubin" required><br>
+
+        <label for="alkaline_phosphotase">Alkaline Phosphotase:</label>
+        <input type="text" name="alkaline_phosphotase" required><br>
+
+        <label for="alamine_aminotransferase">Alamine Aminotransferase:</label>
+        <input type="text" name="alamine_aminotransferase" required><br>
+
+        <label for="aspartate_aminotransferase">Aspartate Aminotransferase:</label>
+        <input type="text" name="aspartate_aminotransferase" required><br>
+
+        <label for="total_proteins">Total Proteins:</label>
+        <input type="text" name="total_proteins" required><br>
+
+        <label for="albumin">Albumin:</label>
+        <input type="text" name="albumin" required><br>
+
+        <label for="albumin_globulin_ratio">Albumin and Globulin Ratio:</label>
+        <input type="text" name="albumin_globulin_ratio" required><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is defined %}
+    <div class="prediction-box">
+        <h2>Prediction Result:</h2>
+        <p>{{ prediction }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>

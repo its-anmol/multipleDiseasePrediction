@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="otherStyles.css">
+</head>
+
+<body>
+    <div class="container">
+        <label for="uname"><b>Name</b></label>
+        <input type="text" id="uname" placeholder="Enter Your Name" name="uname" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" id="email" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
+
+        <button type="submit" class="btn" onclick="getData()">Register</button>
+    </div>
+</body>
+
+<script src="app.js"></script>
+<script>
+    function getData() {
+        var uname = document.getElementById("uname").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("psw").value;
+        register(uname, email, password);
+    }
+</script>
+
+</html>
